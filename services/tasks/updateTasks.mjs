@@ -12,7 +12,7 @@ import updateTasksSchema from "./updateTasksSchema.mjs";
 const updateOne = asyncWrapper(async (req, res) => {
     // req params
     const { params } = req;
-    // params.user_id = "778c7688-69da-4fa8-bf11-2864db91815f";
+    const { user_id } = req.query;
 
     const {body} = req;
 
@@ -31,7 +31,7 @@ const updateOne = asyncWrapper(async (req, res) => {
       .from("tasks")
       .update(schemaValue)
       .eq("id", params.id)
-      .eq("user_id", params.user_id)
+      .eq("user_id", user_id)
       .select("*");
 
 

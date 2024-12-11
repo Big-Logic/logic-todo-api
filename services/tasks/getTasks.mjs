@@ -14,6 +14,7 @@ const getOne = asyncWrapper(async (req, res) => {});
 
 // GET BULK
 const getBulk = asyncWrapper(async (req, res) => {
+  // 
   const { query } = req;
 
 // Validate query against schema
