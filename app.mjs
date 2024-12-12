@@ -2,7 +2,7 @@ import express from "express";
 
 // ROUTES IMPORTS
 import tasksRoutes from "./routes/tasks/tasksRoutes.mjs";
-import usersRoutes from "./routes/users/usersRoutes.mjs";
+import meRoutes from "./routes/me/meRoutes.mjs";
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(express.json());
 
 // API ENDPOINTS
 app.use('/api/v1/tasks', tasksRoutes);
-app.use('api/v1/users', usersRoutes);
+app.use('/api/v1/me', meRoutes);
 
 
 app.use("*", async(req, res) => {

@@ -1,6 +1,6 @@
 export default (req, res, next) => {
 
-    const userId = "";
+    const userId = "d78f2ab0-4c27-49b7-93fd-8ab15d708def";
     const {method} = req;
     
     switch (method) {
