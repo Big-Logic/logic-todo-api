@@ -5,6 +5,7 @@ import supabase from "../../config/supabase.config.mjs";
 import asyncWrapper from "../../utils/asyncWrapper.mjs";
 import SchemaValidationError from "../../utils/schemaValidationError.mjs";
 import SupabaseError from "../../utils/supabaseError.mjs";
+import sendEmailVerification from "../notification/sendEmailVerification.mjs";
 
 // 
 import hashPassword from "./hashPassword.mjs";
@@ -34,13 +35,16 @@ const signup = asyncWrapper(async (req, res) => {
     .from("users")
     .insert([schemaValue])
     .select(
-      "id, first_name, middle_name, last_name, image_url, created_at, updated_at"
+      "id, email"
     );
 
   // throw supabase error to global error handler
   if (error) {
     throw new SupabaseError(error);
   }
+
+  // Send email verification
+  sendEmailVerification(data[0].email);
 
 //   Sign token
   const token = signToken(data[0]);
