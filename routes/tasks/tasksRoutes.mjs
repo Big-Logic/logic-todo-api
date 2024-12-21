@@ -8,10 +8,14 @@ import deleteTasks from "../../services/tasks/deleteTasks.mjs";
 // MIDDLEWARES
 import validateUUID from "../../middlewares/validateUUID.mjs";
 import attachUserId from "../../middlewares/attachUserId.mjs";
+import verifyLogin from "../../services/auth/middlewares/verifyLogin.mjs";
 
 const router = express.Router();
 
 // root endpoint: /api/v1/tasks
+
+// Verify login
+router.use(verifyLogin)
 
 // attach user id to request body or query
 router.use(attachUserId);
