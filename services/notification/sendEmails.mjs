@@ -1,31 +1,43 @@
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
+export default async function (emailOptions) {
+  
+  if (!emailOptions || typeof emailOptions !== "object") {
+    throw Error("emailOptions must be an object");
+  }
 
-export default async function(emailOptions) {
+  const {
+    subject,
+    htmlContent,
+    textContent,
+    recipient: { email: recipientEmail },
+  } = emailOptions;
 
-    const { email: recipientEmail } = emailOptions.recipient;
-    const { subject, htmlContent, textContent } = emailOptions;
+  if (!subject || !htmlContent || !textContent || !recipientEmail) {
+    throw Error(
+      "subject, htmlContent, textContent and recipient properties must be present on emailOptions"
+    );
+  }
 
-    const mailerSend = new MailerSend({
-      apiKey: process.env.MAILERSEND_API_TOKEN,
-    });
+  const mailerSend = new MailerSend({
+    apiKey: process.env.MAILERSEND_API_TOKEN,
+  });
 
-    const sender = new Sender("support@trial-neqvygmvwjwg0p7w.mlsender.net", "Logic Todo");
-    const recipient = [new Recipient(recipientEmail, recipientEmail)];
+  const sender = new Sender(
+    "support@trial-neqvygmvwjwg0p7w.mlsender.net",
+    "Logic Todo"
+  );
 
-    const emailParams = new EmailParams()
-      .setFrom(sender)
-      .setTo(recipient)
-      .setReplyTo(sender)
-      .setSubject(subject)
-      .setHtml(htmlContent)
-      .setText(textContent);
+  const recipient = [new Recipient(recipientEmail, recipientEmail)];
 
-    try {
-        
-       const res = await mailerSend.email.send(emailParams);
-    } catch(err) {
-        console.log(err);
-    }
+  const emailParams = new EmailParams()
+    .setFrom(sender)
+    .setTo(recipient)
+    .setReplyTo(sender)
+    .setSubject(subject)
+    .setHtml(htmlContent)
+    .setText(textContent);
+
+  // Send email
+  await mailerSend.email.send(emailParams);
 }
-

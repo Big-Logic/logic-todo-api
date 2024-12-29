@@ -1,6 +1,9 @@
 // db
 import supabase from "../../config/supabase.config.mjs";
 
+//logger
+import logger from "./../../logger/logger.config.mjs";
+
 // utils
 import asyncWrapper from "../../utils/asyncWrapper.mjs";
 import SchemaValidationError from "../../utils/schemaValidationError.mjs";
@@ -42,6 +45,9 @@ const signup = asyncWrapper(async (req, res) => {
   if (error) {
     throw new SupabaseError(error);
   }
+
+  // Generate log
+  logger.log("info", "new user with email (%s) created successfully.", data[0].email, {date: new Date(Date.now())});
 
   // Send email verification
   sendEmailVerification(data[0].email);
