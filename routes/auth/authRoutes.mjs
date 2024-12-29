@@ -3,7 +3,7 @@ import express from "express";
 // Handlers
 import signup from "../../services/auth/signup.mjs";
 import login from "../../services/auth/login.mjs";
-import verifyEmail from "../../services/notification/verifyEmail.mjs";
+import verifyEmail from "../../services/auth/verifyEmail.mjs";
 
 const router = express.Router();
 
