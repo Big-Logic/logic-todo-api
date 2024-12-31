@@ -1,21 +1,21 @@
 // db
-import supabase from "../../config/supabase.config.mjs";
+import supabase from "../../../config/supabase.config.mjs";
 
 //logger
-import logger from "./../../logger/logger.config.mjs";
+import logger from "../../../logger/logger.config.mjs";
 
 // utils
-import asyncWrapper from "../../utils/asyncWrapper.mjs";
-import SchemaValidationError from "../../utils/schemaValidationError.mjs";
-import SupabaseError from "../../utils/supabaseError.mjs";
-import sendEmailVerification from "../notification/sendEmailVerification.mjs";
+import asyncWrapper from "../../../utils/asyncWrapper.mjs";
+import SchemaValidationError from "../../../utils/schemaValidationError.mjs";
+import SupabaseError from "../../../utils/supabaseError.mjs";
+import sendEmailVerification from "../../notification/sendEmailVerification.mjs";
 
 // 
-import hashPassword from "./hashPassword.mjs";
-import signToken from "./signToken.mjs";
+import hashPassword from "../utils/hashPassword.mjs";
+import signToken from "../utils/signToken.mjs";
 
 // schema
-import signupSchema from "./signupSchema.mjs";
+import signupSchema from "../schemas/signupSchema.mjs";
 
 const signup = asyncWrapper(async (req, res) => {
 

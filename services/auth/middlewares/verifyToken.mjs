@@ -8,7 +8,7 @@ import asyncWrapper from "../../../utils/asyncWrapper.mjs";
 import SchemaValidationError from "../../../utils/schemaValidationError.mjs";
 
 // Schema
-import { tokenSchema } from "../resetPasswordSchema.mjs";
+import { tokenSchema } from "../schemas/resetPasswordSchema.mjs";
 
 const tokenBlocklist = new Set();
 
