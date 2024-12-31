@@ -1,13 +1,13 @@
 // db
-import supabase from "../../config/supabase.config.mjs";
+import supabase from "../../../config/supabase.config.mjs";
 
 // utils
-import asyncWrapper from "../../utils/asyncWrapper.mjs";
-import SchemaValidationError from "../../utils/schemaValidationError.mjs";
-import SupabaseError from "../../utils/supabaseError.mjs";
+import asyncWrapper from "../../../utils/asyncWrapper.mjs";
+import SchemaValidationError from "../../../utils/schemaValidationError.mjs";
+import SupabaseError from "../../../utils/supabaseError.mjs";
 
 // schema
-import updateSchema from "./updateSchema.mjs";
+import updateSchema from "../schemas/updateSchema.mjs";
 
 const updateMe = asyncWrapper(async (req, res) => {
   

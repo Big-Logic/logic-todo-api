@@ -3,8 +3,8 @@ import express from "express";
 const router = express.Router();
 
 // handlers
-import getMe from "../../services/me/getMe.mjs";
-import updateMe from "../../services/me/updateMe.mjs";
+import getMe from "../../services/me/handlers/getMe.mjs";
+import updateMe from "../../services/me/handlers/updateMe.mjs";
 
 // middlewares
 import verifyLogin from "../../services/auth/middlewares/verifyLogin.mjs";
