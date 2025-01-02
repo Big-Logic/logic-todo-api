@@ -1,9 +1,9 @@
 // db
-import supabase from "../../config/supabase.config.mjs";
+import supabase from "../../../config/supabase.config.mjs";
 
 // utils
-import asyncWrapper from "../../utils/asyncWrapper.mjs";
-import SupabaseError from "../../utils/supabaseError.mjs";
+import asyncWrapper from "../../../utils/asyncWrapper.mjs";
+import SupabaseError from "../../../utils/supabaseError.mjs";
 
 const deleteOne = asyncWrapper(async (req, res) => {
   // req params

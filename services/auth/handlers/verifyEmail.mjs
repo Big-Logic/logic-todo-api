@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
-import supabase from "../../config/supabase.config.mjs";
+import supabase from "../../../config/supabase.config.mjs";
 
 // utils
-import asyncWrapper from "../../utils/asyncWrapper.mjs";
+import asyncWrapper from "../../../utils/asyncWrapper.mjs";
 
 // schema
-import verifyEmailSchema from "./verifyEmailSchema.mjs";
+import verifyEmailSchema from "../schemas/verifyEmailSchema.mjs";
 
 const tokenBlocklist = new Set();
 

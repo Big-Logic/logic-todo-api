@@ -1,14 +1,14 @@
 // db
-import supabase from "../../config/supabase.config.mjs";
+import supabase from "../../../config/supabase.config.mjs";
 
 // utils
-import asyncWrapper from "../../utils/asyncWrapper.mjs";
-import SchemaValidationError from "../../utils/schemaValidationError.mjs";
-import SupabaseError from "../../utils/supabaseError.mjs";
-import sendResetPasswordEmail from "../notification/sendResetPasswordEmail.mjs";
+import asyncWrapper from "../../../utils/asyncWrapper.mjs";
+import SchemaValidationError from "../../../utils/schemaValidationError.mjs";
+import SupabaseError from "../../../utils/supabaseError.mjs";
+import sendResetPasswordEmail from "../../notification/sendResetPasswordEmail.mjs";
 
 // schema
-import requestPasswordResetSchema from "./requestPasswordResetSchema.mjs";
+import requestPasswordResetSchema from "../schemas/forgotPasswordSchema.mjs";
 
 export default asyncWrapper(async (req, res) => {
 

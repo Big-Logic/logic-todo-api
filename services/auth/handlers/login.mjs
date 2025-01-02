@@ -1,17 +1,17 @@
 // db
-import supabase from "../../config/supabase.config.mjs";
+import supabase from "../../../config/supabase.config.mjs";
 
 // utils
-import asyncWrapper from "../../utils/asyncWrapper.mjs";
-import SchemaValidationError from "../../utils/schemaValidationError.mjs";
-import SupabaseError from "../../utils/supabaseError.mjs";
+import asyncWrapper from "../../../utils/asyncWrapper.mjs";
+import SchemaValidationError from "../../../utils/schemaValidationError.mjs";
+import SupabaseError from "../../../utils/supabaseError.mjs";
 
 // 
-import signToken from "./signToken.mjs";
+import signToken from "../utils/signToken.mjs";
 
 // schema
-import loginSchema from "./loginSchema.mjs";
-import verifyPassword from "./verifyPassword.mjs";
+import loginSchema from "../schemas/loginSchema.mjs";
+import verifyPassword from "../utils/verifyPassword.mjs";
 
 const login = asyncWrapper(async (req, res) => {
   // 
@@ -50,9 +50,16 @@ const login = asyncWrapper(async (req, res) => {
     if(passwordVerResult) {
       //   Sign token
       const token = signToken(data[0]);
+      
+      res.cookie("token", token, {
+        httpOnly: true,
+        // secure: true, // Use HTTPS
+        sameSite: "Strict",
+      });
+
       res
         .status(200)
-        .json({ status: "ok", message: "logined successfully", token });
+        .json({ status: "ok", message: "logined successfully"});
     } else {
         res.status(400).json({
           status: "fail",

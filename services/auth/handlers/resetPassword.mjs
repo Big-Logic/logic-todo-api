@@ -2,14 +2,14 @@ import {readFile} from "fs/promises";
 import path from "path";
 
 // utils
-import asyncWrapper from "../../utils/asyncWrapper.mjs";
-import SchemaValidationError from "../../utils/schemaValidationError.mjs";
+import asyncWrapper from "../../../utils/asyncWrapper.mjs";
+import SchemaValidationError from "../../../utils/schemaValidationError.mjs";
 
 // Schema
-import {  passwordSchema } from "./resetPasswordSchema.mjs";
+import {  passwordSchema } from "../schemas/resetPasswordSchema.mjs";
 // auth
-import hashPassword from "./hashPassword.mjs";
-import supabase from "../../config/supabase.config.mjs";
+import hashPassword from "../utils/hashPassword.mjs";
+import supabase from "../../../config/supabase.config.mjs";
 
 // const tokenBlocklist = new Set();
 
