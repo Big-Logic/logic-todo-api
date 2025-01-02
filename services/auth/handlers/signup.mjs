@@ -55,7 +55,13 @@ const signup = asyncWrapper(async (req, res) => {
 //   Sign token
   const token = signToken(data[0]);
 
-  res.status(201).json({message: "Account successfully created", token});
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: true, // Use HTTPS
+    sameSite: "Strict",
+  });
+
+  res.status(201).json({message: "Account successfully created"});
 });
 
 export default signup;

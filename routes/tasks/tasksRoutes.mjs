@@ -1,9 +1,9 @@
 import express from "express";
 
-import createTasks from "../../services/tasks/createTasks.mjs";
-import getTasks from "../../services/tasks/getTasks.mjs";
-import updateTasks from "../../services/tasks/updateTasks.mjs";
-import deleteTasks from "../../services/tasks/deleteTasks.mjs";
+import createTasks from "../../services/tasks/handlers/createTasks.mjs";
+import getTasks from "../../services/tasks/handlers/getTasks.mjs";
+import updateTasks from "../../services/tasks/handlers/updateTasks.mjs";
+import deleteTasks from "../../services/tasks/handlers/deleteTasks.mjs";
 
 // MIDDLEWARES
 import validateUUID from "../../middlewares/validateUUID.mjs";

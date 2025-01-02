@@ -1,4 +1,5 @@
 import express from "express";
+import cookieParser from "cookie-parser";
 
 // ROUTES IMPORTS
 import tasksRoutes from "./routes/tasks/tasksRoutes.mjs";
@@ -8,6 +9,7 @@ import authRoutes from "./routes/auth/authRoutes.mjs";
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 // API ENDPOINTS
 app.use('/api/v1/tasks', tasksRoutes);

@@ -50,9 +50,16 @@ const login = asyncWrapper(async (req, res) => {
     if(passwordVerResult) {
       //   Sign token
       const token = signToken(data[0]);
+      
+      res.cookie("token", token, {
+        httpOnly: true,
+        // secure: true, // Use HTTPS
+        sameSite: "Strict",
+      });
+
       res
         .status(200)
-        .json({ status: "ok", message: "logined successfully", token });
+        .json({ status: "ok", message: "logined successfully"});
     } else {
         res.status(400).json({
           status: "fail",
