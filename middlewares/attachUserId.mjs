@@ -11,6 +11,7 @@ export default (req, res, next) => {
         break;
       case "POST":
         req.body.user_id = userId;
+        req.query.user_id = userId;
         break;
     }
 

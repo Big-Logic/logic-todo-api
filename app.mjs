@@ -1,5 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
+import fileUpload from "express-fileupload";
 
 // ROUTES IMPORTS
 import tasksRoutes from "./routes/tasks/tasksRoutes.mjs";
@@ -10,6 +11,13 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(
+  fileUpload({
+    // useTempFiles: true,
+    // tempFileDir: "/tmp/",
+    limits: { fileSize: 50 * 1024 * 1024 },
+  })
+);
 
 // API ENDPOINTS
 app.use('/api/v1/tasks', tasksRoutes);
