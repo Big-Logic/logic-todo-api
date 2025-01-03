@@ -1,20 +1,28 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
+import helmet from "helmet";
+import csurf from "csurf";
+import rateLimit from "express-rate-limit";
 
 // ROUTES IMPORTS
 import tasksRoutes from "./routes/tasks/tasksRoutes.mjs";
 import meRoutes from "./routes/me/meRoutes.mjs";
 import authRoutes from "./routes/auth/authRoutes.mjs";
 
+
 const app = express();
 
+app.use(rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per window
+}));
+app.use(helmet());
+app.use(csurf());
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   fileUpload({
-    // useTempFiles: true,
-    // tempFileDir: "/tmp/",
     limits: { fileSize: 50 * 1024 * 1024 },
   })
 );
